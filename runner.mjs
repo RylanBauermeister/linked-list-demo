@@ -22,9 +22,7 @@ ll.unshift(1)
 ll.unshift(2)
 ll.unshift(3)
 ll.print();
-console.log(ll.tail.val)
 console.log(ll.head.val)
-console.log(ll.size)
 
 console.log(ll.shift());
 console.log(ll.shift());

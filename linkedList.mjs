@@ -8,85 +8,72 @@ class Node {
   }
 }
 
-
-//Linked List Data Structure
+//Linked List example, basic.
 export default class LinkedList {
-
-  //Initialize a new singly linked list with a head, tail, and size.
-  constructor(val){
+  constructor(){
     this.head = null
-    this.tail = this.head
-    this.size = 0
   }
 
-  //Push a value onto the end of the list.
+  //Push a value to the end of the list by searching for the end of the list, then appending
+  //a new node as the end of the list.
   push(val){
-    //If size is zero, then we are pushing a new head/tail.
-    if(this.size === 0){
+    if(this.head === null){
       this.head = new Node(val)
-      this.tail = this.head;
     } else {
-      this.tail.next = new Node(val)
-      this.tail = this.tail.next
+      let read = this.head;
+      while(read.next !== null){
+        read = read.next;
+      }
+      read.next = new Node(val)
     }
-    this.size++;
   }
 
-  //Pop the last value off the linked list, return its value;
-  pop(val){
-    //If size is zero, list is empty. Return nothing.
-    if(this.size === 0){
-      return undefined;
+  //Get the end of the list, then sever it from the list.
+  pop(){
+    let ret;
+    if(this.head === null) return undefined;
+    if(this.head.next === null){
+      ret = this.head.val
+      this.head = null
+      return ret;
     }
-    //If size is one, destroy the head and tail and set the size to zero.
-    if (this.size === 1) {
-      return this.returnHeadAndClear();
-    }
-    //Otherwise, go to one before the end of the linked list, and set its next
-    //value to null, thus severing the end of the list.
-    let read = this.head;
-    for(let i = 0; i < this.size - 2; i++){
+
+    let read = this.head
+
+    while(read.next.next !== null){
       read = read.next;
     }
+
+    ret = read.next.val;
     read.next = null;
-    this.size--;
-    return read.val;
-  }
-
-  //Remove the first item of the linked list.
-  shift(){
-    //If list is empty, return nothing.
-    if(this.size === 0){
-      return undefined;
-    }
-    //If list is size one, nuke remaining list.
-    if (this.size === 1){
-      return this.returnHeadAndClear();
-    }
-
-    //Otherwise, the head bumps down its next value.
-    let ret = this.head.val;
-    this.head = this.head.next;
-    this.size--;
     return ret;
   }
 
-  //Add a new value to the front of the list.
-  unshift(val){
-    //If the list was empty, reinstantiate the list.
-    if(this.size === 0){
-      this.head = new Node(val)
-      this.tail = this.head;
-      this.size++;
-      return this.size;
-    }
+  //Remove the head.
+  shift(){
+    if(this.head === null) return undefined;
 
-    //Otherwise, create a new head and set the old head as its next parameter.
-    let newHead = new Node(val)
+    let ret = this.head.val;
+    this.head = this.head.next;
+    return ret;
+  }
+
+  //Add tot he front of the list.
+  unshift(val){
+    let newHead = new Node(val);
     newHead.next = this.head;
     this.head = newHead;
-    this.size++;
-    return this.size;
+  }
+
+  contains(val){
+    let read = this.head;
+    while(read !== null){
+      if(read.val === val){
+        return true;
+      }
+      read = read.next;
+    }
+    return false;
   }
 
   //Search the list for a specific value, remove it if found.
@@ -112,27 +99,6 @@ export default class LinkedList {
       trail = read;
       read = read.next;
     }
-  }
-
-  //Sets head and tail to null (clears the list), then returns the old value of head.
-  returnHeadAndClear(){
-    let ret = this.head.val;
-    this.head = null;
-    this.tail = null;
-    this.size = 0;
-    return ret;
-  }
-
-  //Checks if the list contains the given value.
-  contains(val){
-    let read = this.head;
-    while(read !== null){
-      if(read.val === val){
-        return true;
-      }
-      read = read.next;
-    }
-    return false;
   }
 
   //Prints the list out.
