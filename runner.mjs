@@ -4,10 +4,36 @@
 import LinkedList from './linkedList'
 
 let ll = new LinkedList()
-ll.append(1);
-ll.append(2);
-ll.append(3);
+ll.push(1);
+ll.push(2);
+ll.push(3);
 
 ll.print();
+
+ll.remove(2);
+ll.print();
+ll.pop();
+ll.pop();
+ll.pop();
+ll.print();
+
+ll.unshift(1)
+ll.unshift(2)
+ll.unshift(3)
+ll.print();
+console.log(ll.tail.val)
+console.log(ll.head.val)
+console.log(ll.size)
+
+console.log(ll.shift());
+console.log(ll.shift());
+console.log(ll.shift());
+ll.print();
+
+ll.push(1)
+ll.print();
+
+console.log(ll.contains(1))
+console.log(ll.contains(2))
 
 //This is a test!
