@@ -10,7 +10,8 @@ ll.push(3);
 
 ll.print();
 
-ll.remove(2);
+ll.remove(1);
+ll.remove(333);
 ll.print();
 ll.pop();
 ll.pop();
