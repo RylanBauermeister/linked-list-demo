@@ -135,6 +135,6 @@ export default class LinkedListHeadAndTail {
       output += read.val + " "
       read = read.next
     }
-    console.log(output)
+    return output
   }
 }

@@ -101,6 +101,6 @@ export default class LinkedList {
       output += read.val + " "
       read = read.next
     }
-    console.log(output)
+    return output;
   }
 }

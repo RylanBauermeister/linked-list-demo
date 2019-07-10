@@ -82,7 +82,7 @@ export default class DoublyLinkedList {
       output += read.val + " "
       read = read.next
     }
-    console.log(output)
+    return output
   }
 
   reversePrint(){
@@ -92,7 +92,7 @@ export default class DoublyLinkedList {
       output += read.val + " "
       read = read.previous
     }
-    console.log(output)
+    return output
   }
 
 }
