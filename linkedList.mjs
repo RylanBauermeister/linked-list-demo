@@ -1,12 +1,4 @@
-//The basic Node class.  All Linked Lists are made up of a series of traversable nodes.
-class Node {
-
-  //Nodes are initialized with a value, which can be of any data type.
-  constructor(val){
-    this.val = val
-    this.next = null
-  }
-}
+import {Node} from './node.mjs'
 
 //Linked List example, basic.
 export default class LinkedList {
