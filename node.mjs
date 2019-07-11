@@ -8,6 +8,8 @@ export class Node {
   }
 }
 
+//Bi-directional nodes can keep track of the item in front of them, and the item
+//behind them. They are closer to graph nodes, which contain a list of adjacent nodes.
 export class TwoWayNode {
   constructor(val){
     this.val = val;

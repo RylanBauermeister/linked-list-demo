@@ -7,11 +7,13 @@ export default class DoublyLinkedList {
     this.tail = null;
   }
 
+  //Helper function for when we need to make a new list.
   initialize(val){
     this.head = new TwoWayNode(val)
     this.tail = this.head;
   }
 
+  //Push a value to the end of the list.  If list is empty, initialize it.
   push(val){
     if(this.tail === null){
       this.initialize(val)
@@ -23,6 +25,7 @@ export default class DoublyLinkedList {
     }
   }
 
+  //Pop a value off the end of the list.
   pop(){
     if(this.tail === null) return undefined;
     let ret = this.tail.val;
@@ -31,6 +34,7 @@ export default class DoublyLinkedList {
     return ret;
   }
 
+  //Shift a value off the front of the list.
   shift(){
     if(this.head === null) return undefined;
     let ret = this.head.val;
@@ -39,6 +43,7 @@ export default class DoublyLinkedList {
     return ret;
   }
 
+  //Add a value to the front of the list. If list is empty, initialize it.
   unshift(val){
     if(this.head === null){
       this.initialize(val);
@@ -50,6 +55,7 @@ export default class DoublyLinkedList {
     }
   }
 
+  //Remove by value.
   remove(val){
     let read = this.head;
     while(read !== null){
@@ -65,6 +71,7 @@ export default class DoublyLinkedList {
     }
   }
 
+  //Takes a value, returns true if value is in the list.
   contains(val){
     let read = this.head;
     while(read !== null){
@@ -76,6 +83,7 @@ export default class DoublyLinkedList {
     return false;
   }
 
+  //Prints the list.
   print(){
     let read = this.head
     let output = ""
@@ -86,6 +94,8 @@ export default class DoublyLinkedList {
     return output
   }
 
+  //Prints the list backwards. Just one little perk of being able to read in
+  //reverse.
   reversePrint(){
     let read = this.tail
     let output = ""
